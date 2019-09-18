@@ -30,7 +30,9 @@
   },
   "dependencies": {
     "express": "^4.16.4",
-    "react-redux": "^6.0.0"
+    "knex": "^0.19.2",
+    "react-redux": "^6.0.0",
+    "sqlite3": "^4.0.6"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",
