@@ -1,10 +1,7 @@
 import request from 'superagent'
 
-const rootUrl = '/api/v1'
+const rootUrl = '/api/v1/chemicals'
 
 export function getFruits () {
-  return request.get(rootUrl + '/fruits')
-    .then(res => {
-      return res.body.fruits
-    })
+  return request.get(rootUrl + '/')
 }

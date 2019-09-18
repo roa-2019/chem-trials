@@ -24,13 +24,17 @@
   },
   "jest": {
     "setupFiles": [
-      "./test/client/config/jsdom.js",
-      "./test/client/config/enzyme.js"
+      "./tests/client/config/jsdom.js",
+      "./tests/client/config/enzyme.js"
     ]
   },
   "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
     "express": "^4.16.4",
-    "react-redux": "^6.0.0"
+    "knex": "^0.19.2",
+    "react-redux": "^6.0.0",
+    "sqlite3": "^4.0.6",
+    "supertest": "^4.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",

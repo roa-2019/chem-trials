@@ -1,9 +1,12 @@
+
+const environment = process.env.NODE_ENV || 'development'
+const config = require('../knexfile')[environment]
+const connection = require('knex')(config)
+
 module.exports = {
-  getFruits
+  getChems
 }
 
-let fruits = ['banana', 'apple', 'feijoa']
-
-function getFruits () {
-  return Promise.resolve(fruits)
+function getChems (db = connection) {
+  return db('chemicals').select()
 }

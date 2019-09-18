@@ -1,5 +1,3 @@
-require('babel-register')
-
 const {JSDOM} = require('jsdom')
 
 const dom = new JSDOM('<body></body>', {
