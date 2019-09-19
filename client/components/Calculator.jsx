@@ -13,6 +13,7 @@ export default class Calculator extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.calculate = this.calculate.bind(this)
   }
 
   componentDidMount() {
@@ -30,9 +31,19 @@ export default class Calculator extends React.Component {
     });
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
+  handleSubmit(event) { 
+    event.preventDefault()
+    console.log(this.state)
+   
+    this.calculate(this.state.litres)    
   }
+
+  calculate (litres) {
+    const chem = this.state.chemical
+    const mls = chem.mls / chem.perlitre
+    const dose = mls * litres
+      console.log(dose)
+  } 
 
 
   render() {
@@ -44,7 +55,7 @@ export default class Calculator extends React.Component {
         <p>
         {chemical.company} {chemical.name} - {chemical.mls}mls per {chemical.perlitre} litres
         </p>
-        <form>
+        <form onSubmit={this.handleSubmit}>
       <label>
         Litres in tank:
         <input
@@ -52,7 +63,7 @@ export default class Calculator extends React.Component {
         name="litres"
         value= {this.state.litres}
         onChange={this.handleChange}
-        onSubmit={this.handleSubmit}
+        
       />
       </label>
       <input type="submit" value ="Submit" />
