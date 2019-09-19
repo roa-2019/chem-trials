@@ -1,28 +1,23 @@
 import React from 'react'
-
+import {HashRouter as Router, Route} from 'react-router-dom'
 
 import Chemicals from './Chemicals'
+import Calculator from './Calculator'
 
 class App extends React.Component {
   constructor(props){
     super(props)
   }
 
-  // componentDidMount () {
-  //   getChems()
-  //     .then(fruits => {
-  //       this.setState({fruits})
-  //     })
-  // }
-
   render () {
     return (
+      <Router>
       <div className='app'>
         <h1>Chem Trials</h1>
-        <ul>
-          <Chemicals />
-        </ul>
+          <Route path='/' component={Chemicals} />
+          <Route path='/calculator/:id' component={Calculator} />
       </div>
+      </Router>
     )
   }
 }

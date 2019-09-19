@@ -6,10 +6,16 @@ const router = express.Router()
 
 router.get('/', (req, res) => {
   db.getChems()
-  
-    .then(chems => {
+  .then(chems => {
       res.json({chems})
     })
+})
+
+router.get('/calculator/:id', (req, res) => {
+  db.getChemById(req.params.id)
+  .then(chem => {
+    res.json(chem)
+  })
 })
 
 module.exports = router
