@@ -14,7 +14,6 @@ export default class Chemicals extends React.Component {
   componentDidMount() {
     getChems()
     .then(res => {
-      console.log(res.body.chems)
       this.setState ({
         chemicals: res.body.chems
       })
