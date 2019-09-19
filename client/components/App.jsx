@@ -1,6 +1,6 @@
 import React from 'react'
 
-
+import ChemList from './ChemList'
 import Chemicals from './Chemicals'
 
 class App extends React.Component {
@@ -21,6 +21,7 @@ class App extends React.Component {
         <h1>Chem Trials</h1>
         <ul>
           <Chemicals />
+          <ChemList />
         </ul>
       </div>
     )
