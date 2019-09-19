@@ -1,11 +1,12 @@
 import React from 'react'
 
-import { getFruits } from '../apiClient'
+
+import Chemicals from './Chemicals'
 
 class App extends React.Component {
-  // state = {
-  //   chemicals: []
-  // }
+  constructor(props){
+    super(props)
+  }
 
   // componentDidMount () {
   //   getChems()
@@ -19,9 +20,7 @@ class App extends React.Component {
       <div className='app'>
         <h1>Chem Trials</h1>
         <ul>
-          {/* {this.state.fruits.map(fruit => (
-            <li key={fruit}>{fruit}</li> */}
-          {/* ))} */}
+          <Chemicals />
         </ul>
       </div>
     )
