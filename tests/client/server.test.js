@@ -1,15 +1,11 @@
 const request = require('supertest')
-const cheerio = require('cheerio')
+const { getChemById } = require('../../server/db')
 
-// jest.mock('../db', () => ({
-//   getUser: (id) => Promise.resolve(
-//     {id: id, name: 'test user', email: 'test@user.nz'}
-//   ),
-//   getUsers: () => Promise.resolve([
-//     {id: 2, name: 'test user 2', email: 'test2@user.nz'},
-//     {id: 4, name: 'test user 4', email: 'test4@user.nz'}
-//   ])
-// }))
+jest.mock('../../server/db', () => ({
+  getChems: () => Promise.resolve([{},{}]),
+  getChemById: jest.fn(() => Promise.resolve ([{}, {}]))
+
+}))
 
 const server = require('../../server/server')
 
@@ -20,4 +16,23 @@ test('GET /', () => {
     .then((res) => {
     })
     .catch(err => expect(err).toBeNull())
+})
+
+
+test('home route is successfully loading', () => {
+  return request(server)
+  .get('/api/v1/chemicals')
+  .expect(200)
+  .then(res => {
+    expect(res.body.chems.length).toBe(2)
+  })
+})
+
+test('/calculator/3 returns correctly', () => {
+  return request(server)
+  .get('/api/v1/chemicals/calculator/3')
+  .then(res => {
+    expect(getChemById).toHaveBeenCalledWith('3')
+    expect(res.body.length).toBe(2)
+  })
 })

@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { getChemById } from '../apiClient'
+import { Link } from 'react-router-dom'
 
 export default class Calculator extends React.Component {
   constructor(props) {
@@ -8,7 +9,8 @@ export default class Calculator extends React.Component {
 
     this.state = {
       chemical: {},
-      litres: ''
+      litres: '',
+      dose: ''
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -32,9 +34,7 @@ export default class Calculator extends React.Component {
   }
 
   handleSubmit(event) { 
-    event.preventDefault()
-    console.log(this.state)
-   
+    event.preventDefault()   
     this.calculate(this.state.litres)    
   }
 
@@ -42,7 +42,9 @@ export default class Calculator extends React.Component {
     const chem = this.state.chemical
     const mls = chem.mls / chem.perlitre
     const dose = mls * litres
-      console.log(dose)
+    this.setState({
+      dose: dose.toFixed(2)
+    })
   } 
 
 
@@ -68,6 +70,10 @@ export default class Calculator extends React.Component {
       </label>
       <input type="submit" value ="Submit" />
     </form>
+    <p>
+    {this.state.dose == '' ? ''  : `Dose: ${this.state.dose}mls`}     
+    </p>
+    <Link to="/" onClick={() => {this.state.dose = ''}}>Choose another chemical</Link>
       </React.Fragment>
     )
   }
