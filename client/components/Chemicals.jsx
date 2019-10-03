@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 import { getChems }  from '../apiClient.js'
 
@@ -36,3 +37,10 @@ export default class Chemicals extends React.Component {
 
 }
 
+const mapStateToProps = (state) => {
+  return {
+    chemicals: state.chemicals
+  }
+}
+
+export default connect(mapStateToProps)(App)
