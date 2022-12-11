@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "knex": "^0.19.2",
     "react-redux": "^6.0.0",
     "sqlite3": "^4.0.6",
